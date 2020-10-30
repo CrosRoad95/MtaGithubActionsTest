@@ -20,8 +20,5 @@ jobs:
       - name: Lua action
         uses: nebularg/actions-luacheck@v1
         with:
-          files: 'test.lua'
-          path: '${{ github.workspace }}'
-          args: ''
-          config: ''
-          annotate: 'none'
+          files: lua.lua
+          args: -qo 011
