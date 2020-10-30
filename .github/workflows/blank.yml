@@ -17,11 +17,10 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - name: Build site assets  
-        working-directory: ${{ github.workspace }}../
+      - name: Test
         run: ls -la  
-      - name: Lua action
+      - name: Test2
         uses: nebularg/actions-luacheck@v1
         with:
-          files: ${{ github.workspace }}/test.lua
+          files: test.lua
           args: -qo 011
