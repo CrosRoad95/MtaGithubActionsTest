@@ -17,12 +17,29 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      - name: Lua action
-        uses: mileschou/lua-action@master
+      - name: Check
         with:
-          args: lua -v
+          # A list of files, rockspecs, or directories to be checked. Paths can be
+          # absolute or relative to the `path` option.
+          files: 'test.lua'
 
-      - name: Lua action 2
-        uses: mileschou/lua-action@master
-        with:
-          args: lua --help
+          # The working directory for luacheck. The file list should be relative to
+          # this path and output filenames be displayed relative to this path.
+          # Default: ${{ github.workspace }}
+          path: '${{ github.workspace }}'
+
+          # Additional command-line arguments.
+          # See https://luacheck.readthedocs.io/en/stable/cli.html
+          args: ''
+
+          # URL to a custom configuration (`.luacheckrc`) file that will be used as
+          # the default configuration file.
+          config: ''
+
+          # Emits annotations for source code at locations parsed from the output.
+          # Must be set to "none", "warning" or "error".
+          #
+          # Requires that output of warnings not be suppressed through the -qq or -qqq arguments.
+          #
+          # Default: 'none'
+          annotate: 'test123'
