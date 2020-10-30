@@ -20,8 +20,9 @@ jobs:
       - name: Lua action
         uses: mileschou/lua-action@master
         with:
-          args: lua ./test.lua
+          args: test.lua
+
       - name: Lua action 2
         uses: mileschou/lua-action@master
         with:
-          args: test.lua
+          args: lua -v
