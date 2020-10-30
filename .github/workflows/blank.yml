@@ -20,5 +20,5 @@ jobs:
       - name: Lua action
         uses: nebularg/actions-luacheck@v1
         with:
-          files: lua.lua
+          files: test.lua
           args: -qo 011

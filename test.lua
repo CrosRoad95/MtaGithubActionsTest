@@ -1,2 +1,4 @@
-asset(test(3) == 3)
-asset(test(4) == 3)
+assert(test(3) == 3)
+assert(test(4) == 3)
+
+print("Siema siema")
