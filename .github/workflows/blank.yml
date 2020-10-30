@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build site assets  
-        working-directory: ${{ github.workspace }}  
+        working-directory: ${{ github.workspace }}../
         run: ls -la  
       - name: Lua action
         uses: nebularg/actions-luacheck@v1
