@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check
+      - uses: nebularg/actions-luacheck@v1
         with:
           # A list of files, rockspecs, or directories to be checked. Paths can be
           # absolute or relative to the `path` option.
