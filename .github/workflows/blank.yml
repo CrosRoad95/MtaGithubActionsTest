@@ -10,14 +10,42 @@ on:
   pull_request:
     branches: [ main ]
 
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Lua action
-        uses: mileschou/lua-action@master
-        with:
-          args: lua test.lua -v
+
+      - uses: actions/checkout@v2
+
+      - name: download 64bit mta
+        run: wget http://linux.mtasa.com/dl/multitheftauto_linux_x64.tar.gz
+      - name: extract mta
+        run: tar -xf multitheftauto_linux_x64.tar.gz
+      - name: download config
+        run: wget http://linux.mtasa.com/dl/baseconfig.tar.gz
+      - name: extract config
+        run: tar -xf baseconfig.tar.gz
+      - name: move config
+        run: mv baseconfig/* multitheftauto_linux_x64/mods/deathmatch
+      - name: cd mta folder
+        run: mv multitheftauto_linux_x64/* ./
+      - name: list files
+        run: ls -la
+      - name: make resources folder
+        run: mkdir mods/deathmatch/resources/
+      - name: copy resources
+        run: mv resources/* mods/deathmatch/resources/
+      - name: start server
+        run: ./mta-server64
+      - name: read logs
+        run: cat mods/deathmatch/logs/server.log
+      - name: get result
+        run: cat mods/deathmatch/resources/admin/result.txt
+      - name: exit
+        run: exit $(cat mods/deathmatch/resources/admin/result.txt)
