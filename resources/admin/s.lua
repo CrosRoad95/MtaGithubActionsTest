@@ -1,7 +1,7 @@
 function test()
     local a = createElement("test")
     setElementData(a, "a", "a")
-    assert(getElementData(a, "a") == b)
+    assert(getElementData(a, "a") == "b")
     
     return 1
 end
